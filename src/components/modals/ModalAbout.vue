@@ -16,8 +16,8 @@
 
         <div class="vuefinder__about-modal__tab-content" v-if="selectedTab === TAB.ABOUT">
           <div class="vuefinder__about-modal__description">{{ t('Vuefinder is a simple, lightweight, and fast file manager library for Vue.js applications') }}</div>
-          <a href="https://vuefinder.ozdemir.be" class="vuefinder__about-modal__link" target="_blank">{{ t('Project home') }}</a>
-          <a href="https://github.com/n1crack/vuefinder" class="vuefinder__about-modal__link" target="_blank">{{ t('Follow on GitHub') }}</a>
+          <a href="https://trybond.com" class="vuefinder__about-modal__link" target="_blank">{{ t('Project home') }}</a>
+          <a href="https://github.com/bond-north-america" class="vuefinder__about-modal__link" target="_blank">{{ t('Follow on GitHub') }}</a>
         </div>
 
         <div class="vuefinder__about-modal__tab-content" v-if="selectedTab === TAB.SETTINGS">

@@ -12,6 +12,12 @@
           </div>
         </div>
         <div ref="container" class="vuefinder__upload-modal__buttons">
+          <div class="vuefinder__about-modal__setting-label">
+            <label>Please select a file type</label>
+            <select class="form-control col-4 m-2 mb-2">
+              <option>Test</option>
+            </select>
+          </div>
           <button ref="pickFiles" type="button" class="vf-btn vf-btn-secondary">
             {{ t('Select Files') }}
           </button>
