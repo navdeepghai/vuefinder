@@ -10,7 +10,7 @@
   "module": "./dist/vuefinder.js",
   "types": "./dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host localhost --port 9899",
     "build": "vite build",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit"

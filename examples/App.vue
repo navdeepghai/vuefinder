@@ -2,7 +2,7 @@
   <div class="wrapper">
     
     <label for="example">
-      Example
+      Test
     </label>
     <div>
       <select id="example" v-model="example">
@@ -84,19 +84,16 @@ const examples = {
 const request = {
   // ----- CHANGE ME! -----
   // [REQUIRED] Url for development server endpoint
-  baseUrl: "http://vuefinder.ozdemir.be.test/vuefinder",
+  baseUrl: "https://portal.nav.com/api/method/bond_erp.file_manager.handle_request",
   // ----- CHANGE ME! -----
 
   // Additional headers & params & body
   headers: { "X-ADDITIONAL-HEADER": 'yes' },
-  params: { additionalParam1: 'yes' },
-  body: { additionalBody1: ['yes'] },
+  params: { fromVuefinder: 'yes' },
+  body: { fromVuefinder: ['yes'] },
 
   // And/or transform request callback
   transformRequest: req => {
-    if (req.method === 'get') {
-      req.params.vf = "1"
-    }
     return req;
   },
 
