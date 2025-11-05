@@ -7,13 +7,13 @@ import dts from 'vite-plugin-dts'
 
 export default defineConfig({
     plugins: [
-        dts({ outDir: 'dist/types', entryRoot: 'src' }),
+        dts({ outDir: '/Users/navdeepghai/navdeep/bond-erp/apps/bond_erp/bond_erp/public/js/file_manager/lib/types', entryRoot: 'src' }),
         vue(),
         svgLoader(),
         copy({
             targets: [
-                {src: 'src/locales/*', dest: 'dist/locales'},
-                {src: 'src/features.js', dest: 'dist'},
+                {src: 'src/locales/*', dest: '/Users/navdeepghai/navdeep/bond-erp/apps/bond_erp/bond_erp/public/js/file_manager/lib/locales'},
+                {src: 'src/features.js', dest: '/Users/navdeepghai/navdeep/bond-erp/apps/bond_erp/bond_erp/public/js/file_manager/lib'},
             ],
             hook: "writeBundle",
         })
@@ -26,6 +26,7 @@ export default defineConfig({
         },
     },
     build: {
+        outDir: "/Users/navdeepghai/navdeep/bond-erp/apps/bond_erp/bond_erp/public/js/file_manager/lib/",
         lib: {
             entry: resolve(__dirname, 'src/index.js'),
             formats: ['es', 'cjs'],

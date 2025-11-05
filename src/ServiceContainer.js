@@ -102,5 +102,8 @@ export default (props, options) => {
 
         // file system
         fs: useData(adapter, path),
+
+        // file types for frappe
+        fileTypes: props.fileTypes,
     });
 }

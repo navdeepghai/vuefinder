@@ -12,10 +12,10 @@
           </div>
         </div>
         <div ref="container" class="vuefinder__upload-modal__buttons">
-          <div class="vuefinder__about-modal__setting-label">
-            <label>Please select a file type</label>
-            <select class="form-control col-4 m-2 mb-2">
-              <option>Test</option>
+          <div class="form-group">
+            <label class="ml-2">Please select a file type</label>
+            <select class="form-control col-4 ml-2 mb-2 pl-2" @change="setFileType($event)">
+              <option v-for="value in fileTypes" :value="value">{{ value }}</option>
             </select>
           </div>
           <button ref="pickFiles" type="button" class="vf-btn vf-btn-secondary">
@@ -79,6 +79,7 @@ import UploadSVG from "../icons/upload.svg";
 
 const app = inject('ServiceContainer');
 const {t} = app.i18n;
+const fileTypes = app.fileTypes();
 
 const uppyLocale = t("uppy");
 
@@ -124,7 +125,14 @@ const hasFilesInDropArea = ref(false);
  * @type {?Uppy}
  */
 let uppy;
+let filetype;
 
+/*
+  set file type
+*/
+function setFileType($event){
+  filetype = $event.target.value;
+}
 /**
  * Find queue entry index by id
  *
@@ -189,10 +197,15 @@ function openFileSelector() {
   pickFiles.value.click();
 }
 
+
 /**
  * Begin upload
  */
 function upload() {
+  if(!filetype){
+    message.value = t("Please select file type to upload");
+    return;
+  }
   if (uploading.value) {
     return;
   }
@@ -267,7 +280,7 @@ function buildReqParams() {
   return app.requester.transformRequestParams({
     url: '',
     method: 'post',
-    params: { q: 'upload', adapter: app.fs.adapter, path: app.fs.data.dirname },
+    params: { q: 'upload', adapter: app.fs.adapter, path: app.fs.data.dirname, fileType: filetype},
   });
 }
 
@@ -329,6 +342,7 @@ onMounted(async () => {
     message.value = error.message;
   });
   uppy.on('upload', () => {
+
     const reqParams = buildReqParams();
     uppy.setMeta({ ...reqParams.body });
     const xhrPlugin = uppy.getPlugin('XHRUpload');

@@ -69,7 +69,18 @@ const props = withDefaults(defineProps<VueFinderProps>(), {
   },
   loadingIndicator: 'circular',
   contextMenuItems: () => contextMenuItems,
-})
+  fileTypes: ()=> {
+    let fileTypes = [""];
+    if(frappe){
+      for(var t in frappe.boot.file_types){
+        for(var v in frappe.boot.file_types[t]){
+          fileTypes.push(frappe.boot.file_types[t][v]['value']);
+        }
+      }
+    }
+    return fileTypes;
+  }
+});
 
 // the object is passed to all components as props
 const app = ServiceContainer(props, inject('VueFinderOptions'));

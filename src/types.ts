@@ -3,6 +3,7 @@ import type VueFinder from "./components/VueFinder.vue"
 import type ServiceContainer from "./ServiceContainer";
 import type { RequestConfig } from "./utils/ajax.js";
 import type { Item as ContextMenuItem } from "./utils/contextmenu.js";
+import type { list } from "postcss";
 
 export type App = ReturnType<typeof ServiceContainer>
 
@@ -23,6 +24,7 @@ export interface VueFinderProps {
   showThumbnails?: boolean;
   selectButton?: SelectButton;
   loadingIndicator?: "circular" | "linear";
+  fileTypes: () => string[];
   contextMenuItems?: ContextMenuItem[];
   onError?: (error: any) => void;
   onSelect?: SelectEvent;
